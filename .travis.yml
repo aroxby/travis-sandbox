@@ -1,0 +1,4 @@
+language: python
+services: docker
+install: docker pull debian
+script: docker run --rm debian true
