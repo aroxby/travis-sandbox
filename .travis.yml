@@ -1,4 +1,6 @@
 language: python
 services: docker
 install: docker pull debian
-script: docker run --rm debian true
+script: travis_wait 1 docker run --rm debian sleep 540
+after_success: echo "S:$TRAVIS_TEST_RESULT"; docker ps -a
+after_failure: echo "F:$TRAVIS_TEST_RESULT"; docker ps -a
